@@ -4,7 +4,7 @@ A deep learning framework based on graph neural networks—identifying key regio
 ## Abstract: 
 Complex systems are frequently modeled as spatially embedded networks, where nodes and edges are distributed within a physical space. A critical challenge in spatial network analysis is identifying key regions whose activation or removal of nodes and edges can significantly enhance or degrade network functionality with broad applications ranging from disease prevention and traffic congestion optimization. Although many advanced methods perform well in general topological networks, effective integration of topological and geographical features in the identification of critical regions remains unresolved. Here, we propose a novel spatial network disintegration model that employs square regions as the fundamental units of analysis, addressing the regional overlap issue inherent in circle-based disintegration models. We further introduce a deep learning framework, Key Region Identification with Graph Neural Networks (KRIG), trained on numerous small synthetic spatial networks to identify key regions in diverse real-world applications, including infrastructure and road networks. Extensive experiments validate that KRIG significantly outperforms existing approaches in detecting critical regions. The framework effectively balances topological and spatial characteristics through large-scale data-driven learning. The proposed deep learning framework opens up a new direction for analyzing spatial networks using deep learning techniques, which enables us to identify critical regions to resist attacks and failures and improve network reliability.
 
-## Paper
+## Reference：
 
 If you found this article helpful, please cite:
 
