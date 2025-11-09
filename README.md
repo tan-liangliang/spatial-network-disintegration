@@ -1,4 +1,4 @@
-# Apatial Network Disintegration
+# Spatial Network Disintegration
 A deep learning framework based on graph neural networks—identifying key regions to deconstruct spatial networks.
 
 # Abstract: 
