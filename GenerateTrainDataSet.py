@@ -386,38 +386,21 @@ def PrepareTrainData(graph_type_list, num_graph):
 
 if __name__ == '__main__':
 
-    # start_time = time.time()  # 记录开始时间
-    Synthetic_Type = ['BA']  # 'BA', 'ER', 'WS'
-    # Network_Layout = ['KKL']  # 'KKL', 'SPEL' 'RL' 'CL' 'SPIL'
+    start_time = time.time()  
+    Synthetic_Type = ['BA']  
+    Network_Layout = ['KKL', 'SPEL', 'RL', 'CL', 'SPIL']
+    
+    for id in range(0, 5000):
+        for type in Synthetic_Type:  # 每种模型生成1000个网络
+            for g_layout in Network_Layout:
+                GenerateTrainData(id, type, g_layout)
 
-    # for type in Synthetic_Type:  # 每种模型生成1000个网络
-    #     for g_layout in Network_Layout:
-            # if g_layout == 'RL':
-            #     initnum = 0
-            #     endnum = 1000
-            # if g_layout == 'KKL':
-            #     initnum = 5000
-            #     endnum = 7500
-            # if g_layout == 'SPEL':
-            #     initnum = 2000
-            #     endnum = 3000
-    #         # if g_layout == 'CL':
-    #         #     initnum = 150
-    #         #     endnum = 200
-    #         # if g_layout == 'SPIL':
-    #         #     initnum = 200
-    #         #     endnum = 250
-    #
-            # for id in range(initnum, endnum):
-            #         GenerateTrainData(id, type, g_layout)
+    end_time = time.time()
+    print("程序运行时间：", end_time - start_time, "秒")
 
-
-    # end_time = time.time()
-    # print("程序运行时间：", end_time - start_time, "秒")
-
-    #
     num_graph = 25000
     PrepareTrainData(Synthetic_Type, num_graph)
+
 
 
 
