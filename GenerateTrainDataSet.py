@@ -89,11 +89,11 @@ def Get_Grid_Adj(Grid, cen_edge):
 
 
 def GenerateTrainData(id, graph_type, graph_layout):
-    print('--------------------------------------------------------------------------------------------------------------------------------------------------------------')
-    print(f'Generating No.{id} training {graph_type} graphs {graph_layout} layout.')                                 # 打印一条消息，指示函数正在生成具有特定 ID 和图类型的训练图。
+    print('-------------------------------------------------------------------------------------------------------')
+    print(f'Generating No.{id} training {graph_type} graphs {graph_layout} layout.')         
 
-    DATASET_PATH = os.path.join(os.getcwd(), 'data', 'train', '30_50_'+graph_type+'_graph')   # os.getcwd()返回当前所运行脚本的目录
-    os.makedirs(DATASET_PATH, exist_ok=True)                                                  # os.makedirs() 函数用于在路径不存在时创建目录
+    DATASET_PATH = os.path.join(os.getcwd(), 'data', 'train', '30_50_'+graph_type+'_graph')  
+    os.makedirs(DATASET_PATH, exist_ok=True)                                                  
 
     if graph_type == 'ER':
         g_type = 'erdos_renyi'
@@ -113,7 +113,6 @@ def GenerateTrainData(id, graph_type, graph_layout):
         g_layout = 'spectral_layout'
     elif graph_layout == 'SPIL':
         g_layout = 'spiral_layout'
-
 
 
     g, num_nodes, node_positions = Generate_Graph(g_type = g_type, g_layout=g_layout)  # Generate Graph 生成图信息以.gml格式保存
@@ -385,7 +384,6 @@ def PrepareTrainData(graph_type_list, num_graph):
 
 
 
-
 if __name__ == '__main__':
 
     # start_time = time.time()  # 记录开始时间
@@ -424,106 +422,3 @@ if __name__ == '__main__':
 
 
 
-
-
-
-
-
-
-
-
-
-    # file_path1 = r"D:\Python_Projects\Paper2-Network-Disintegration\data\train\20_25_BA_graph\OptimalSetsFile\train_optimal_sets_2.npy"
-    # train_optimal_sets_0 = nx.read_gpickle(file_path1)
-    # print("最优瓦解圆集：\n", train_optimal_sets_0)
-    # frequency_score = Initial_Lable(train_optimal_sets_0)
-    # print(frequency_score)
-
-
-
-
-
-
-
-
-
-
-
-
-    # random_seed = 7
-    # G = nx.karate_club_graph()
-    # layout = nx.random_layout(G, seed=random_seed)
-    #
-    # # 获取每个网络节点的坐标，四舍五入保留四位小数
-    # node_positions = {node: tuple(round(coord, 4) for coord in layout[node]) for node in G.nodes()}
-    # # print("网络节点坐标", node_positions)
-    #
-    # interval = 1 / 4           # 相邻两个格点的间隔
-    # part = int(1 / interval)   # 划分
-    # Grid = [[round(interval * m, 4), round(interval * n, 4)] for m in range(part + 1) for n in range(part + 1)]  # 生成一个 part × part 的二维网格
-    # print("网格坐标：", Grid)
-    # #
-    # dim = part + 1  # 特征矩阵维数
-    #
-    # n = 6 # 瓦解圆数
-    #
-    # G_copy, G_pos_copy = copy.deepcopy(G), copy.deepcopy(node_positions)
-    #
-    # R = 0.1 # 瓦解圆半径
-    #
-    # max_cen_index, remove_edges, Feature_matrix, circle_edge = find_edge_in_circle(G_copy, G_pos_copy, Grid, R, dim)
-    # find_edge_in_circle(net, pos, grid, r, dim):
-    # print("瓦解圆索引：", max_cen_index)
-    # print("移除边集：", remove_edges)
-    # print("特征矩阵：", Feature_matrix)
-    # print("圆索引与包含的边", circle_edge)
-
-
-
-
-
-    # G_copy.remove_nodes_from(remove_nodes)
-    # G_copy.remove_edges_from(remove_edges)
-
-    # size = nx.number_of_nodes(G)
-    # largest_cc = max(nx.connected_components(G_copy), key=len)  # 获取最大的连通子图
-    # lcc = len(largest_cc) / size
-    #
-    # print("移除节点集后最大连通片尺寸：", lcc)
-
-
-    # # 重构瓦解后的网络
-    # layout1 = nx.random_layout(G, seed=random_seed)
-    # # 获取每个节点的坐标，四舍五入保留四位小数
-    # node_positions1 = {node: tuple(round(coord, 4) for coord in layout1[node]) for node in G_copy.nodes()}
-    # print(node_positions)
-
-
-    # for node, position in node_positions.items():
-    #     # print(node)
-    #     # print(position)
-    #     x = position[0]
-    #     y = position[1]
-    #     plt.scatter(x, y, color='blue', s=10)  # 绘制节点
-    #     for neighbor in G.neighbors(node):
-    #         neighbor_pos = node_positions[neighbor]
-    #         plt.plot([x, neighbor_pos[0]], [y, neighbor_pos[1]], color='g', linewidth=0.1)
-    #     # 可以根据需要添加节点标签
-    #     plt.text(x, y, str(node), fontsize=10, ha='center', va='center')
-    #
-    # # 画出最优瓦解圆
-    # circle_centers = [Grid[i] for i in max_cen_index]
-    # # print("最优瓦解圆坐标：", circle_centers)
-    # circle_radius = R  # 圆的半径
-    # for circle_center in circle_centers:
-    #     # circle_center = (0.4, 0.6)  # 圆心的坐标，例如在中间位置（0.5, 0.5）
-    #     red_circle = plt.Circle(circle_center, circle_radius, color='red', fill=False, alpha=1)
-    #     plt.gca().add_patch(red_circle)  # 将圆添加到当前绘图中
-    #
-    #
-    # plt.grid(True)
-    # # 将红色圆添加到当前绘图中
-    # plt.gca().add_patch(red_circle)
-    # # 显示图形
-    # plt.title("Spatial Network with Embedded Nodes")
-    # plt.show()
